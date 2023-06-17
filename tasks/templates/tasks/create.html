@@ -1,0 +1,17 @@
+{% extends 'tasks/base.html'%}
+{% block title %}
+Make task
+{% endblock %}
+{% block content %}
+<h1> Make task</h1>
+  <form method="post">
+    {% csrf_token %}
+    {{ form.title }}<br>
+    {{ form.content }}<br>
+    <button class="btn btn-primary w-100 py-2" type="submit" style="background-color: green;" >Add</button>
+    <span> {{ error }}</span>
+
+
+
+  </form>
+{% endblock %}

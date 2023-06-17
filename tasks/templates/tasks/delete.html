@@ -1,0 +1,15 @@
+{% extends 'tasks/base.html'%}
+{% block title %}
+Succed
+{% endblock %}
+{% block content %}
+<h1> Congratulations, you realy did that?)</h1>
+  <form method="post">
+    {% csrf_token %}
+    <button type="submit" class="btn btn-success"> Yep</button>
+    <span> {{ error }}</span>
+
+
+
+  </form>
+{% endblock %}
