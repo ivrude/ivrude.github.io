@@ -113,21 +113,21 @@ def create_view(request):
     :return: об'єкт відповіді
     """
     error = ''
-    if request.method == 'POST':
-        form = TaskForm(request.POST)
-        if form.is_valid():
-            task = form.save(commit=False)
-            task.user = request.user
-            task.save()
-            return redirect('main')
-        else:
-            error = "Try again"
+    try:
+        if request.method == 'POST':
+            form = TaskForm(request.POST)
+            if form.is_valid():
+                task = form.save(commit=False)
+                task.user = request.user
+                task.save()
+                return redirect('main')
+    except Exception as e:
+        return redirect('register')
     form = TaskForm()
     dict={
         'form': form,
         'error': error
     }
     return render(request, 'tasks/create.html',dict)
-
 
 
