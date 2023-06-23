@@ -1,0 +1,27 @@
+# Byte-compiled / optimized Python files
+__pycache__/
+*.py[cod]
+
+# Django static and media files
+staticfiles/
+media/
+
+# Django database file
+*.sqlite3
+
+# Virtual environment
+venv/
+
+# PyCharm specific files
+.idea/
+*.iml
+*.ipr
+*.iws
+
+# Environment variables
+.env
+
+# Other temporary or local files
+*.log
+*.swp
+*~
