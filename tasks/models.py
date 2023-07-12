@@ -7,11 +7,11 @@ class Task(models.Model):
     user = models.ForeignKey(User, max_length=10, on_delete=models.CASCADE, null = True)
 
     def __str__(self):
-        #Повертає рядок, що представляє об'єкт Task.
+        #Returns a string representing a Task object.
        return self.title
 
     def get_absolute_url(self):
-        #Повертає абсолютний URL-адрес для об'єкта Task.
+        #Returns the absolute URL for the Task object.
         return f'/crate/{self.id}'
 
     class Meta:
