@@ -10,10 +10,10 @@ from django.contrib.auth import authenticate, login
 
 def register(request):
     """
-       Реєстрація нового користувача.
+       New user registration.
 
-       :param request: об'єкт запиту
-       :return: об'єкт відповіді
+       :param request: the request object
+       :return: the response object
        """
     if request.method == 'POST':
         username = request.POST['username']
@@ -28,10 +28,10 @@ def register(request):
     return render(request, 'tasks/register.html')
 def login_view(request):
     """
-      Вхід користувача.
+      User login.
 
-      :param request: об'єкт запиту
-      :return: об'єкт відповіді
+      :param request: the request object
+      :return: the response object
       """
     if request.method == 'POST':
         username = request.POST['username']
@@ -45,11 +45,11 @@ def login_view(request):
     return render(request, 'tasks/login.html')
 class TaskSuccedView(DeleteView):
     """
-     Представлення для видалення задачі.
+    View to delete a task.
 
-     :param model: модель Task
-     :param template_name: шаблон для відображення
-     :param success_url: URL-адреса після успішного видалення
+     :param model: Task model
+     :param template_name: The template to display
+     :param success_url: URL after successful uninstallation
      """
     model=Task
     template_name = 'tasks/delete.html'
@@ -57,11 +57,11 @@ class TaskSuccedView(DeleteView):
 
 class TaskDetailView(DetailView):
     """
-    Представлення для детального перегляду задачі.
+    View for a detailed view of the task.
 
-    :param model: модель Task
-    :param template_name: шаблон для відображення
-    :param context_object_name: ім'я контекстної змінної
+    :param model: Task model
+    :param template_name: The template to display
+    :param context_object_name: the name of the context variable
     """
     model=Task
     template_name = 'tasks/details_view.html'
@@ -69,13 +69,13 @@ class TaskDetailView(DetailView):
 
 class TaskChangeView(UpdateView):
     """
-    Представлення для зміни задачі.
+    Presentation to change the task.
 
-    :param model: модель Task
-    :param template_name: шаблон для відображення
-    :param context_object_name: ім'я контекстної змінної
-    :param success_url: URL-адреса після успішного оновлення
-    :param form_class: клас форми
+    :param model: Task model
+    :param template_name: The template to display
+    :param context_object_name: the name of the context variable
+    :param success_url: URL after successful update
+    :param form_class: the class of the form
     """
     model=Task
     template_name = 'tasks/change.html'
@@ -85,10 +85,10 @@ class TaskChangeView(UpdateView):
 
 def base_view(request):
     """
-        Представлення головної сторінки.
+        Presentation of the main page.
 
-        :param request: об'єкт запиту
-        :return: об'єкт відповіді
+        :param request: the request object
+        :return: the response object
         """
     current_user = request.user.id
     tasks = Task.objects.all().filter(user=current_user)
@@ -96,10 +96,10 @@ def base_view(request):
 
 def about_view(request):
     """
-      Представлення сторінки "Про нас".
+      Introducing the "About Us" page.
 
-      :param request: об'єкт запиту
-      :return: об'єкт відповіді
+      :param request: the request object
+      :return: the response object
       """
     return render(request, 'tasks/main.html',)
 
@@ -107,10 +107,10 @@ def about_view(request):
 
 def create_view(request):
     """
-    Представлення створення нової задачі.
+    Introducing creating a new task.
 
-    :param request: об'єкт запиту
-    :return: об'єкт відповіді
+    :param request: the request object
+    :return: the response object
     """
     error = ''
     try:
